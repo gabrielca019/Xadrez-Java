@@ -23,22 +23,21 @@ public class Board {
 		return columns;
 	}
 
-	
-	public Piece piece(int row, int column) {
+	public Piece piece(int row, int column) { //retorna a peça que esta na casa informada por meio da posição(usado por conta da substituição das letras por numeros nas casas do tabuleiro)
 		if(!positionExists(row, column)) {
 			throw new BoardException("Position not on the board");
 		}
 		return pieces[row][column];
 	}
 	
-	public Piece piece(Position position) {
+	public Piece piece(Position position) { //retorna a peça que esta na casa informada por meio de um objeto position
 		if(!positionExists(position)) {
 			throw new BoardException("Position not on the board");
 		}
 		return pieces[position.getRow()][position.getColumn()];
 	}
 	
-	public void placePiece(Piece piece, Position position) {
+	public void placePiece(Piece piece, Position position) { //coloca a peça na posição informada
 		if(thereIsAPiece(position)) {
 			throw new BoardException("There is already a piece on position " + position);
 		}
@@ -46,15 +45,15 @@ public class Board {
 		piece.position = position;
 	}
 	
-	private boolean positionExists(int row, int column) {
+	private boolean positionExists(int row, int column) { //retorna se a posição existe no tabuleiro
 		return row >= 0 && row < rows && column >= 0 && column < columns;
 	}
 	
-	public boolean positionExists(Position position) {
+	public boolean positionExists(Position position) { //returna a confirmação de existencia da casa no tabuleiro
 		return positionExists(position.getRow(), position.getColumn());
 	}
 	
-	public boolean thereIsAPiece(Position position) {
+	public boolean thereIsAPiece(Position position) { //retorna se na casa ja possui uma peça
 		if(!positionExists(position)) {
 			throw new BoardException("Position not on the board");
 		}

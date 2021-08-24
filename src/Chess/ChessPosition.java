@@ -7,7 +7,7 @@ public class ChessPosition {
 	private char column;
 	private int row;
 	
-	public ChessPosition(char column, int row) {
+	public ChessPosition(char column, int row) { 
 		if(column < 'a' || column > 'h' || row < 1 || row > 8) {
 			throw new ChessException("Erros instantiating ChessPosition. Valid values are from a1 to h8");
 		}
@@ -23,11 +23,11 @@ public class ChessPosition {
 		return row;
 	}
 	
-	protected Position toPosition() {
+	protected Position toPosition() { //seleciona a casa ao qual sera realizado a jogada da peça escolhida
 		return new Position(8 - row, column - 'a');
 	}
 	
-	protected static ChessPosition fromPosition(Position position) {
+	protected static ChessPosition fromPosition(Position position) { //seleciona a casa desejada para efetuar a jogada
 		return new ChessPosition((char)('a' - position.getColumn()), 8 - position.getRow());
 	}
 
@@ -35,7 +35,5 @@ public class ChessPosition {
 	public String toString() {
 		return "" + column + row;
 	}
-	
-	
 	
 }
