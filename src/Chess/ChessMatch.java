@@ -25,7 +25,7 @@ public class ChessMatch {
 		return mat;
 	}
 	
-	public ChessPiece performChessMove(ChessPosition sourcePosition, ChessPosition targetPosition) {
+	public ChessPiece performChessMove(ChessPosition sourcePosition, ChessPosition targetPosition) { //efetua a chamada de tudo que é necessario para movimentar peças
 		Position source = sourcePosition.toPosition();
 		Position target = targetPosition.toPosition();
 		validateSourcePosition(source);
