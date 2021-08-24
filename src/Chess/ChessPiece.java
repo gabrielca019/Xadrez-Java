@@ -3,7 +3,7 @@ package Chess;
 import BoardGame.Board;
 import BoardGame.Piece;
 
-public class ChessPiece extends Piece { //responsavel por identificar de qual time é a peça
+public abstract class ChessPiece extends Piece { //responsavel por identificar de qual time é a peça
 
 	private Color color;
 
