@@ -15,11 +15,11 @@ public abstract class Piece {
 	
 	public abstract boolean[][] possibleMoves();
 	
-	public boolean possibleMove(Position position) {
+	public boolean possibleMove(Position position) { //retorna a possibilidade de movimento na indicada casa da matriz
 		return possibleMoves()[position.getRow()][position.getColumn()];
 	}
 	
-	public boolean isThereAnyPossibleMove() {
+	public boolean isThereAnyPossibleMove() { //verifica se a peça está afogada
 		boolean[][] mat = possibleMoves();
 		for(int i = 0; i < mat.length; i++) {
 			for(int j = 0; j < mat.length; j++) {

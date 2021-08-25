@@ -32,7 +32,7 @@ public class UI {
 	public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
 	public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 	
-	public static void clearScreen() { //
+	public static void clearScreen() { //limpa a tela
 		System.out.print("\033[H\033[2J");
 		System.out.flush();
 	}
@@ -51,13 +51,16 @@ public class UI {
 		return null;
 	}
 	
-	public static void printMatch(ChessMatch chessMatch, List<ChessPiece> captured) {
+	public static void printMatch(ChessMatch chessMatch, List<ChessPiece> captured) { //printa o tabuleiro e  as peças capturadas
 		printBoard(chessMatch.getPieces());
 		System.out.println();
 		printCapturedPieces(captured);
 		System.out.println();
 		System.out.println("Turn: " + chessMatch.getTurn());		
-		System.out.println("Waiting player: " + chessMatch.getCurrentPlayer());		
+		System.out.println("Waiting player: " + chessMatch.getCurrentPlayer());	
+		if(chessMatch.isCheck()) {
+			System.out.println("CHECK!");
+		}
 	}
 	
 	public static void printBoard(ChessPiece[][] pieces) { //montando o tabuleiro a ser apresentado
@@ -100,9 +103,10 @@ public class UI {
 		System.out.print(" ");
 	}
 	
-	private static void printCapturedPieces(List<ChessPiece> captured) {
+	private static void printCapturedPieces(List<ChessPiece> captured) { //formula o List com as peças capturadas dos dois jogadores e printa elas
 		List<ChessPiece> white = captured.stream().filter(x -> x.getColor() == Color.WHITE).collect(Collectors.toList()); 
 		List<ChessPiece> black = captured.stream().filter(x -> x.getColor() == Color.BLACK).collect(Collectors.toList());
+		
 		System.out.println("Captured pieces: ");
 		System.out.print("White: ");
 		System.out.print(ANSI_WHITE);
