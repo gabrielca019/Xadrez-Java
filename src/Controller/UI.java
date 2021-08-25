@@ -51,16 +51,30 @@ public class UI {
 		for(int i = 0; i < pieces.length; i++) {
 			System.out.print((8 - i) + " ");
 			for(int j = 0; j < pieces.length; j++) {
-				printPiece(pieces[i][j]);
+				printPiece(pieces[i][j], false);
 			}
 			System.out.println();
 		}
 		System.out.println("  a b c d e f g h");
 	}
 	
-	private static void printPiece(ChessPiece piece) { //recebe a peça pra ser imprimida na determinada casa e determinado jogador, caso não tenha nenhuma peça sera imprimido um traço(padrao de todas as casas vazias)
+	public static void printBoard(ChessPiece[][] pieces, boolean[][] possibleMoves) { //montando o tabuleiro a ser apresentado com os movimentos possiveis da peça em destaque
+		for(int i = 0; i < pieces.length; i++) {
+			System.out.print((8 - i) + " ");
+			for(int j = 0; j < pieces.length; j++) {
+				printPiece(pieces[i][j], possibleMoves[i][j]);
+			}
+			System.out.println();
+		}
+		System.out.println("  a b c d e f g h");
+	}
+	
+	private static void printPiece(ChessPiece piece, boolean backgroud) { //recebe a peça pra ser imprimida na determinada casa e determinado jogador, caso não tenha nenhuma peça sera imprimido um traço(padrao de todas as casas vazias)
+		if(backgroud) {
+			System.out.print(ANSI_BLUE_BACKGROUND);
+		}
 		if (piece == null) {
-            System.out.print("-");
+            System.out.print("-" + ANSI_RESET);
         }
         else {
             if (piece.getColor() == Color.WHITE) {
