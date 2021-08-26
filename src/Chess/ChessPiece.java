@@ -7,6 +7,7 @@ import BoardGame.Position;
 public abstract class ChessPiece extends Piece { //responsavel por identificar de qual time é a peça
 
 	private Color color;
+	private int moveCount;
 
 	public ChessPiece(Board board, Color color) {
 		super(board);
@@ -17,6 +18,19 @@ public abstract class ChessPiece extends Piece { //responsavel por identificar d
 		return color;
 	}
 	
+	public int getMoveCount() {
+		return moveCount;
+	}
+	
+	public void increaseMoveCount() {
+		moveCount++;
+	}
+	
+	public void decreaseMoveCount() {
+		moveCount--;
+	}
+
+
 	public ChessPosition getChessPosition() { //retorna a posição em forma de xadrez e não em forma de posição de matriz
 		return ChessPosition.fromPosition(position);
 	}
