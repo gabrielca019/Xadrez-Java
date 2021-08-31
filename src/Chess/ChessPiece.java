@@ -30,7 +30,6 @@ public abstract class ChessPiece extends Piece { //responsavel por identificar d
 		moveCount--;
 	}
 
-
 	public ChessPosition getChessPosition() { //retorna a posição em forma de xadrez e não em forma de posição de matriz
 		return ChessPosition.fromPosition(position);
 	}
